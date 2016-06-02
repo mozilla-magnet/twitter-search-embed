@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Object.create"></script>
+    <script src="parse.min.js"></script>
+  </head>
+  <body>
+    <script>
+    var queryStringParameters = parseQueryString(window.location.search);
+    let aEl = document.createElement("a");
+    aEl.classList.add('twitter-timeline');
+    aEl.href = 'https://twitter.com/hashtag/' + escape(queryStringParameters.hashtag);
+    aEl.dataset['dnt'] = true;
+    aEl.dataset['widgetId'] = escape(queryStringParameters['widget-id']);
+    aEl.innerText = '#' + escape(queryStringParameters.hashtag) + " tweets";
+
+    document.body.appendChild(aEl);
+
+    <!-- Twitter code follows -->
+    (!function(d,s,id){var
+    js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs"));</script>
+  </body>
+</html>
